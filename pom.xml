@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.deep</groupId>
+    <artifactId>jibconnect</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>jibconnect</name>
+    <description>Google Jib used to create and push docker image to private registry</description>
+    <packaging>pom</packaging>
+    <version>${project.version}</version>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+    </parent>
+    <properties>
+        <project.version>1.0.0-SNAPSHOT</project.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <springframework.boot.version>2.0.3.RELEASE</springframework.boot.version>
+
+        <!-- Jib Configuration-->
+        <jib.version>2.8.0</jib.version>
+        <dockerToken><!-- docker token -->></dockerToken>
+        <dockerRegistry>hub.docker.com</dockerRegistry>
+        <dockerImageJvm>java-open-jdk:latest</dockerImageJvm>
+        <dockerImageFeed>dkXXXX/app-feed:latest</dockerImageFeed>
+        <dockerImageService>dkXXXX/app-service:latest</dockerImageService>
+        <skipJibFeed>true</skipJibFeed>
+        <skipJibService>true</skipJibService>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>${springframework.boot.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
